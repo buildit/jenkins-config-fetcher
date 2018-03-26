@@ -1,5 +1,8 @@
 # Jenkins Config Fetcher
 
+[![Build Status](https://travis-ci.org/buildit/jenkins-config-fetcher.svg?branch=master)](https://travis-ci.org/buildit/jenkins-config-fetcher)
+[ ![Download](https://api.bintray.com/packages/buildit/maven/jenkins-config-fetcher/images/download.svg) ](https://bintray.com/buildit/maven/jenkins-config-fetcher/_latestVersion)
+
 A component used by the [Jenkins Fetcher](https://github.com/buildit/jenkins-fetcher) and [Jenkins Startup Scripts Runner](https://github.com/buildit/jenkins-startup-scripts-runner) to fetch and parse Jenkins configuration.
 
 ## Configuration File
