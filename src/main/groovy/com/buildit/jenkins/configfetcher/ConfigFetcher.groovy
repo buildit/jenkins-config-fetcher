@@ -293,6 +293,7 @@ class ConfigFetcher {
         def process = new ProcessBuilder(addShellPrefix(command))
                 .directory(workingDir)
                 .redirectErrorStream(logCommand)
+                .inheritIO()
                 .start()
         process.inputStream.eachLine {println it}
         process.waitFor()
