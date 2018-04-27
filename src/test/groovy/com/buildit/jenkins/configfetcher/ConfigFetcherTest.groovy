@@ -13,7 +13,7 @@ import static com.buildit.jenkins.utils.Zipper.zip
 
 class ConfigFetcherTest {
 
-    private static final String SECRET = "144d7e29-9ae5-4ea1-afa6-4d3940f7de90"
+    private static final String SECRET = "1fd8a05b02c749f4"
 
     @Rule
     public TemporaryFolder folder = new TemporaryFolder()
@@ -99,7 +99,7 @@ class ConfigFetcherTest {
         configFile.withWriter {  writer ->
             writer.write(
             '''credentials {
-                nexus=['username':'nexus', 'password':'ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)', 'description':'nexus credentials']
+                nexus=['username':'nexus', 'password':'ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)', 'description':'nexus credentials']
             }''')
         }
         def result =  configFetcher.getConfig([jenkinsHome: jenkinsHome])
@@ -133,7 +133,7 @@ class ConfigFetcherTest {
         configFile.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADI0DEf8VfI6ct++00Hq++S9mbT6pnK9zMqDDe8Q1cQ2t2AiIMw/udYsmCiIe8Cs=)', 'description':'bluemix credentials']
             }''')
         }
         def result =  configFetcher.getConfig([jenkinsHome: jenkinsHome])
@@ -225,7 +225,7 @@ class ConfigFetcherTest {
         jenkinsConfig2.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADI0DEf8VfI6ct++00Hq++S9mbT6pnK9zMqDDe8Q1cQ2t2AiIMw/udYsmCiIe8Cs=)', 'description':'bluemix credentials']
             }''')
         }
         System.metaClass.static.getenv = { String key ->
@@ -249,14 +249,14 @@ class ConfigFetcherTest {
         jenkinsConfig1.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                nexus=['username':'nexus', 'password':'ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)', 'description':'nexus credentials']
+                nexus=['username':'nexus', 'password':'ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)', 'description':'nexus credentials']
             }''')
         }
         File jenkinsConfig2 = folder.newFile("jenkins-config-2.config")
         jenkinsConfig2.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADI0DEf8VfI6ct++00Hq++S9mbT6pnK9zMqDDe8Q1cQ2t2AiIMw/udYsmCiIe8Cs=)', 'description':'bluemix credentials']
             }''')
         }
         def zip = zip(folder.newFile("jenkins-config.zip").absolutePath, jenkinsConfig1.absolutePath, jenkinsConfig2.absolutePath)
@@ -279,14 +279,14 @@ class ConfigFetcherTest {
         jenkinsConfig1.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                nexus=['username':'nexus', 'password':'ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)', 'description':'nexus credentials']
+                nexus=['username':'nexus', 'password':'ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)', 'description':'nexus credentials']
             }''')
         }
         File jenkinsConfig2 = folder.newFile("jenkins-config-2.config")
         jenkinsConfig2.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADI0DEf8VfI6ct++00Hq++S9mbT6pnK9zMqDDe8Q1cQ2t2AiIMw/udYsmCiIe8Cs=)', 'description':'bluemix credentials']
             }''')
         }
         initialiseGitRepository(jenkinsConfig1.parent)
@@ -345,7 +345,7 @@ class ConfigFetcherTest {
         jenkinsConfig.withWriter { writer ->
             writer.write(
                     '''credentials {
-                nexus=['username':'nexus', 'password':'ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)', 'description':'nexus credentials']
+                nexus=['username':'nexus', 'password':'ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)', 'description':'nexus credentials']
             }''')
         }
         initialiseGitRepository(jenkinsConfig.parent)
@@ -373,7 +373,7 @@ class ConfigFetcherTest {
         jenkinsConfig.withWriter { writer ->
             writer.write(
                     '''credentials {
-                nexus=['username':'nexus', 'password':'ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)', 'description':'nexus credentials']
+                nexus=['username':'nexus', 'password':'ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)', 'description':'nexus credentials']
             }''')
         }
         initialiseGitRepository(jenkinsConfig.parent)
@@ -405,7 +405,7 @@ class ConfigFetcherTest {
         jenkinsConfig1.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                nexus=['username':'nexus', 'password':'ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)', 'description':'nexus credentials']
+                nexus=['username':'nexus', 'password':'ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)', 'description':'nexus credentials']
             }''')
         }
         initialiseGitRepository(repo1.absolutePath)
@@ -415,7 +415,7 @@ class ConfigFetcherTest {
         jenkinsConfig2.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADI0DEf8VfI6ct++00Hq++S9mbT6pnK9zMqDDe8Q1cQ2t2AiIMw/udYsmCiIe8Cs=)', 'description':'bluemix credentials']
             }''')
         }
         initialiseGitRepository(repo2.absolutePath)
@@ -437,14 +437,14 @@ class ConfigFetcherTest {
         jenkinsConfig1.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                nexus=['username':'nexus', 'password':'ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)', 'description':'nexus credentials']
+                nexus=['username':'nexus', 'password':'ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)', 'description':'nexus credentials']
             }''')
         }
         File jenkinsConfig2 = folder.newFile("jenkins-config-2.config")
         jenkinsConfig2.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADI0DEf8VfI6ct++00Hq++S9mbT6pnK9zMqDDe8Q1cQ2t2AiIMw/udYsmCiIe8Cs=)', 'description':'bluemix credentials']
             }''')
         }
         initialiseGitRepository(jenkinsConfig1.parent, "foo", "master")
@@ -465,14 +465,14 @@ class ConfigFetcherTest {
         configFile.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADNzFl3wctJJpmh7hBqhAtiKOhL/RFgCGmhHKKA9ANXWWRd9e)', 'description':'bluemix credentials']
             }''')
         }
         File secondConfigFile = folder.newFile("some_other_file.config")
         secondConfigFile.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    nexus=['username':'nexus', 'password':'ENC(kDyqxKpEdY4=)', 'description':'nexus credentials']
+                    nexus=['username':'nexus', 'password':'ENC(AAAADF0Ck5vLU+A15pxvRrg4saLY7pon03byhmI1rzUx5HkWiA==)', 'description':'nexus credentials']
             }''')
         }
         System.metaClass.static.getenv = { String key ->
@@ -494,14 +494,14 @@ class ConfigFetcherTest {
         configFile.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADI0DEf8VfI6ct++00Hq++S9mbT6pnK9zMqDDe8Q1cQ2t2AiIMw/udYsmCiIe8Cs=)', 'description':'bluemix credentials']
             }''')
         }
         File secondConfigFile = folder.newFile("some_other_file.config")
         secondConfigFile.withWriter {  writer ->
             writer.write(
                     '''credentials {
-                    bluemix=['username':'other_bluemix_user', 'password':'ENC(1JUWRr5WtqiDK3Iwz0dh5w==)', 'description':'bluemix credentials']
+                    bluemix=['username':'other_bluemix_user', 'password':'ENC(AAAADOsY16PsHLN7+oitJpqemYjfLfns7KaKsmrMvUge5pF+bqQrhW8=)', 'description':'bluemix credentials']
             }''')
         }
         System.metaClass.static.getenv = { String key ->
@@ -526,29 +526,29 @@ class ConfigFetcherTest {
 
     @Test
     void shouldDecryptSimpleString(){
-        def result = configFetcher.decryptConfigValues("ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)", SECRET)
+        def result = configFetcher.decryptConfigValues("ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)", SECRET)
         Assert.assertThat(result as String, equalTo("somes3cret"))
     }
 
     @Test
     void shouldMatchCaseOfEncryptedStringIndicator(){
-        def result = configFetcher.decryptConfigValues("enc(Y/a5t0YI5fmWqx1NEEYoKQ==)", SECRET)
-        Assert.assertThat(result as String, equalTo("enc(Y/a5t0YI5fmWqx1NEEYoKQ==)"))
+        def result = configFetcher.decryptConfigValues("enc(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)", SECRET)
+        Assert.assertThat(result as String, equalTo("enc(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)"))
     }
 
     @Test
     void shouldOnlyAttemptToDecryptIfPatternIsComplete(){
-        def result = configFetcher.decryptConfigValues("ENC(Y/a5t0YI5fmWqx1NEEYoKQ==", SECRET)
-        Assert.assertThat(result as String, equalTo("ENC(Y/a5t0YI5fmWqx1NEEYoKQ=="))
+        def result = configFetcher.decryptConfigValues("ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H", SECRET)
+        Assert.assertThat(result as String, equalTo("ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H"))
     }
 
     @Test
     void shouldDecryptComplexStringWithMultipleEncryptedValues(){
         def result = configFetcher.decryptConfigValues(stripWhitespace(
                 '''credentials {
-                    nexus=['username':'nexus', 'password':'ENC(Y/a5t0YI5fmWqx1NEEYoKQ==)', 'description':'nexus credentials']
-                    bluemix=['username':'bluemix', 'password':'ENC(V18Pblrx224=)', 'description':'bluemix credentials']
-                    node=['username':'node', 'password':'ENC(V18Pblrx224=)', 'description':'node credentials', 'type': 'SSH', 'privateKeyFile':'.ssh/id_rsa']
+                    nexus=['username':'nexus', 'password':'ENC(AAAADFjPyMqnKecSFI8OeImPdxuDuvTf7mDaGDHFcTtFeLEOrUwCWJ1H)', 'description':'nexus credentials']
+                    bluemix=['username':'bluemix', 'password':'ENC(AAAADN8r+EijhaZOD49ksWKSlknb/0ldvuGDD8GjjowSs2ND2oTM)', 'description':'bluemix credentials']
+                    node=['username':'node', 'password':'ENC(AAAADN8r+EijhaZOD49ksWKSlknb/0ldvuGDD8GjjowSs2ND2oTM)', 'description':'node credentials', 'type': 'SSH', 'privateKeyFile':'.ssh/id_rsa']
                 }''')
                 , SECRET)
         Assert.assertThat(result as String, equalTo(stripWhitespace(
@@ -583,8 +583,8 @@ class ConfigFetcherTest {
         configFile.withWriter {  writer ->
             writer.write(
                     """credentials {
-                nexus=['username':'nexus', 'password':'''ENC(+01gNIV78Co
-                zFW97ZMDM/w==)''', 'description':'nexus credentials']
+                nexus=['username':'nexus', 'password':'''ENC(AAAADFjPyMqnKecSFI8OeImPdxuDu
+vTf7mDaGDHFcTtFeLEOrUwCWJ1H)''', 'description':'nexus credentials']
             }""")
         }
         

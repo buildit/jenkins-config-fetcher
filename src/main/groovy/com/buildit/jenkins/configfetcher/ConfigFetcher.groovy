@@ -5,7 +5,7 @@ import groovy.text.SimpleTemplateEngine
 import java.util.zip.ZipInputStream
 import java.util.zip.ZipEntry
 
-import static com.buildit.Encryptor.decrypt
+import static com.buildit.encryptor.Encryptor.decrypt
 
 class ConfigFetcher {
 
