@@ -26,7 +26,7 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.7'
     compile 'org.apache.ant:ant:1.9.4'
     compile 'org.apache.ivy:ivy:2.4.0'
-    compile 'com.buildit:encryptor:2.0.0'
+    compile 'com.buildit:encryptor:2.1.0'
     testCompile 'org.eclipse.jgit:org.eclipse.jgit:4.7.0.201704051617-r'
     testCompile 'junit:junit:4.11'
     testCompile 'org.eclipse.jetty:jetty-server:9.2.3.v20140905'

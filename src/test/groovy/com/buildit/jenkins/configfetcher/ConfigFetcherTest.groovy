@@ -594,6 +594,22 @@ vTf7mDaGDHFcTtFeLEOrUwCWJ1H)''', 'description':'nexus credentials']
     }
 
     @Test
+    void shouldAccountForTripleQuotedValuesWithSpaces(){
+        File configFile = folder.newFile("jenkins.config")
+        configFile.withWriter {  writer ->
+            writer.write(
+                    """credentials {
+                nexus=['username':'nexus', 'password':'''ENC(AAAADFjPyMqnKecSFI8OeImPdxuDu
+                    vTf7mDaGDHFcTtFeLEOrUwCWJ1H)''', 'description':'nexus credentials']
+            }""")
+        }
+
+
+        def result =  configFetcher.getConfig([jenkinsHome: configFile.parent])
+        Assert.assertThat(result.credentials.nexus.username as String, equalTo("nexus"))
+    }
+
+    @Test
     void shouldReplaceJenkinsHomeTemplateValueWithActualValue(){
         File configFile = folder.newFile("jenkins.config")
         def jenkinsHome = configFile.parent
