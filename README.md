@@ -31,9 +31,7 @@ Note. The JENKINS_CONFIG_GIT_VERIFY_SSL environment variable should be set to 'f
 
 ## Passwords and Sensitive Information
 
-All passwords and sensitive information stored in configuration should be encrypted using the [Encryptor API](https://github.com/buildit/encryptor-api). Any encrypted values in the configuration file must be wrapped using ENC(...). These values will then be decrypted at runtime.
-
-Enter the value you wish encrypt in the "password" field and a secret key in the "secret" field. Copy the output to the config file ensuring any multline values are wrapped in triple quotes like so
+All passwords and sensitive information stored in configuration should be encrypted using the [Encryptor API](https://github.com/buildit/encryptor-api). Any encrypted values in the configuration file must be wrapped using ENC(...) (ensuring any multline values are wrapped in triple quotes like so)
 
 ```
 '''ENC(LWk/qSmbM9xKKRX0o906g0GW1VSnFmeJpLx97XRwpS2GiIV0w/4eptWUb+/PvjG3rMotH+ZgwXAZH6W7yhFiJfe89INTAFhekL
