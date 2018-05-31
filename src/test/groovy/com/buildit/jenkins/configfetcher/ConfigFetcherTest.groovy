@@ -320,12 +320,13 @@ class ConfigFetcherTest {
     }
 
     @Test
-    void shouldNotIncludeUsernameAndPasswordIfPasswordIsMissing() {
+    void shouldIncludeUsernameOnlyIfPasswordIsMissing() {
         def repositoryUrl = "https://github.com/buildit/jenkins-pipeline-libraries.git"
+        def authenticatedUrl = "https://USERNAME@github.com/buildit/jenkins-pipeline-libraries.git"
 
         def result = configFetcher.authenticatedUrl(repositoryUrl, "USERNAME", null)
 
-        Assert.assertThat(result as String, equalTo(repositoryUrl))
+        Assert.assertThat(result as String, equalTo(authenticatedUrl))
     }
 
     @Test
