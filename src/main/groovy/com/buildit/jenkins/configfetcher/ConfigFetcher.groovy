@@ -211,20 +211,21 @@ class ConfigFetcher {
     }
 
     def authenticatedUrl(url, username, password){
-        if((nullOrEmpty(username) || nullOrEmpty(password) || isSsh(url))){
+        if((nullOrEmpty(username) || isSsh(url))){
             return url
         }
         def encodedUsername = urlEncode(username)
         def encodedPassword = urlEncode(password)
         def bits = (url as String).split("://")
+        def authenticatedUrl = "${encodedUsername}:${encodedPassword}@" + bits[0] as String
         if(bits.length == 2){
-            return bits[0] + "://${encodedUsername}:${encodedPassword}@" + bits[1] as String
+            authenticatedUrl = bits[0] + "://${encodedUsername}:${encodedPassword}@" + bits[1] as String
         }
-        return "${encodedUsername}:${encodedPassword}@" + bits[0] as String
+        return authenticatedUrl.replace(":@", "@")
     }
 
     def urlEncode(string){
-        return URLEncoder.encode(string as String, "UTF-8")
+        return nullOrEmpty(string) ? "" : URLEncoder.encode(string as String, "UTF-8")
     }
 
     def isSsh(string){
@@ -312,7 +313,7 @@ class ConfigFetcher {
     }
 
     def nullOrEmpty(string){
-        return !string || string.length() == 0
+        return !string || string.toString().length() == 0
     }
 
     def baseDirectory(){
