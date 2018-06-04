@@ -79,7 +79,6 @@ class ConfigFetcherTest {
     @Test
     void shouldReturnSecretFromFileOverSecretFromEnvironment(){
         String startupSecretFromFile = "244d7e29-9ae5-4ea1-afa6-4d3940f7de92"
-        String startupSecretFromEnvironment = "244d7e29-9ae5-4ea1-afa6-4d3940f7de93"
         File secretFile = folder.newFile("secret.txt")
         secretFile.withWriter {  writer ->
             writer.write(startupSecretFromFile)
@@ -89,6 +88,23 @@ class ConfigFetcherTest {
         }
         def result = configFetcher.secret([jenkinsHome: defaultJenkinsHome])
         Assert.assertThat(result as String, equalTo(startupSecretFromFile))
+    }
+
+    @Test
+    void shouldTrimSecretFromFile(){
+        String secret = "244d7e29-9ae5-4ea1-afa6-4d3940f7de92"
+        String startupSecretFromFile = """
+                ${secret}
+        """
+        File secretFile = folder.newFile("secret.txt")
+        secretFile.withWriter {  writer ->
+            writer.write(startupSecretFromFile)
+        }
+        System.metaClass.static.getenv = { String string ->
+            return [JENKINS_STARTUP_SECRET_FILE: secretFile.absolutePath].get(string)
+        }
+        def result = configFetcher.secret([jenkinsHome: defaultJenkinsHome])
+        Assert.assertThat(result as String, equalTo(secret))
     }
 
 
