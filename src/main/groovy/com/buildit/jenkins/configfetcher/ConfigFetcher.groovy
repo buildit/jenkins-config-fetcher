@@ -42,7 +42,7 @@ class ConfigFetcher {
         def secretFileLocationString = System.getenv("JENKINS_STARTUP_SECRET_FILE") ? System.getenv("JENKINS_STARTUP_SECRET_FILE") : null
         if (secretFileLocationString) {
             def secretFile = new File(System.getenv("JENKINS_STARTUP_SECRET_FILE").toString())
-            secret = secretFile.exists() ? secretFile.text : ""
+            secret = secretFile.exists() ? secretFile.text.trim() : ""
         }
         if (!secret) {
             secret = System.getenv("JENKINS_STARTUP_SECRET")
