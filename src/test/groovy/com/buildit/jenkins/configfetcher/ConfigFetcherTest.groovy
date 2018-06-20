@@ -1,5 +1,6 @@
 package com.buildit.jenkins.configfetcher
 
+import groovy.mock.interceptor.MockFor
 import org.junit.*
 import org.junit.rules.TemporaryFolder
 
@@ -88,6 +89,27 @@ class ConfigFetcherTest {
         }
         def result = configFetcher.secret([jenkinsHome: defaultJenkinsHome])
         Assert.assertThat(result as String, equalTo(startupSecretFromFile))
+    }
+
+    @Test
+    void shouldReturnSecretFromKubernetesMount() {
+        String startupSecret = UUID.randomUUID()
+
+        System.metaClass.static.getenv = { String secret ->
+            return [:].get(secret)
+        }
+        System.metaClass.static.getenv = { String key ->
+            return [:].get(key)
+        }
+
+        def mockFile = new MockFor(File)
+        mockFile.demand.exists{true}
+        mockFile.demand.getText{startupSecret}
+
+        mockFile.use {
+            def result = configFetcher.secret([jenkinsHome: defaultJenkinsHome])
+            Assert.assertThat(result as String, equalTo(startupSecret))
+        }
     }
 
     @Test
