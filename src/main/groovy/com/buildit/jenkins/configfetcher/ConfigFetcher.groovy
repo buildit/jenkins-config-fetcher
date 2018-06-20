@@ -11,6 +11,7 @@ class ConfigFetcher {
 
     static final DEFAULT_FILE = 'jenkins.config'
     static final CONFIGFILE_SUFFIX = ['.config']
+    static final KUBERNETES_SECRET_PATH = '/var/run/jenkins/startup-secret'
 
     def fetch(){
         return getConfig([jenkinsHome: jenkinsHome()])
@@ -51,6 +52,10 @@ class ConfigFetcher {
         if (!secret && bindingVariables) {
             def secretFile = new File("${bindingVariables.jenkinsHome}/key")
             secret = secretFile.exists() ? secretFile.text : null
+        }
+        if (!secret) {
+            def secretFile = new File(KUBERNETES_SECRET_PATH)
+            secret = secretFile.exists() ? secretFile.text.trim() : null
         }
         if (!secret) {
             println("NOTE. No decryption secret has been set.")
